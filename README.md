@@ -1,7 +1,7 @@
 # Harmonizing Generalization and Personalization in Federated Prompt Learning [ICML2024]
 The implementation of paper Harmonizing Generalization and Personalization in Federated Prompt Learning[ICML2024].
 [[paper]](https://arxiv.org/abs/2405.09771)
-
+![FedPGP-pipeline](FedPGP.png "FedPGP-pipeline")
 ## How to Run
 
 You can run `federated_main.py` with some specified arguments.
