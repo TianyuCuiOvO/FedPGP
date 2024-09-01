@@ -1,34 +1,37 @@
-# Introduction
-Prompt learning in pretrained visual-language models has shown remarkable flexibility across various downstream tasks. Leveraging its inherent lightweight nature, recent research attempted to integrate the powerful pretrained models into federated learning frameworks to simultaneously reduce communication costs and promote local training on insufficient data. Despite these efforts, current federated prompt learning methods lack specialized designs to systematically address severe data heterogeneities, e.g., data distribution with both label and feature shifts involved. 
-To address this challenge, we present Federated Prompts Cooperation via Optimal Transport (FedOTP), which introduces efficient collaborative prompt learning strategies to capture diverse category traits on a per-client basis. Specifically, for each client, we learn a global prompt to extract consensus knowledge among clients, and a local prompt to capture client-specific category characteristics. Unbalanced Optimal Transport is then employed to align local visual features with these prompts, striking a balance between global consensus and local personalization. 
-Extensive experiments on datasets with various types of heterogeneities have demonstrated that our FedOTP outperforms the state-of-the-art methods.
-
+# Harmonizing Generalization and Personalization in Federated Prompt Learning [ICML2024]
+The implementation of paper Harmonizing Generalization and Personalization in Federated Prompt Learning[ICML2024].
+[[paper]](https://arxiv.org/abs/2405.09771)
 
 ## How to Run
 
 You can run `federated_main.py` with some specified arguments.
 
+## Data Preparation
+Please follow the instructions at CoOP https://github.com/KaiyangZhou/CoOp/blob/main/DATASETS.md to prepare the following datasets: Caltech101, OxfordPets, Flowers102, Food101, DTD.
+
+For CIFAR10 and CIFAR100 datasets, please download and unzip data under `DATA/` file catalog. Or simply run experiments with CIFAR10/CIFAR100 dataset, the program will download data automatically.
+
+For DomainNet and office-caltech10 datasets, please follow the instructions of Dataset described [here](https://github.com/med-air/FedBN/blob/master/README.md). 
+
 ### Training
 
-`--root` takes as input a path to dataset, like `caltech101` or `oxford_flowers`.
+`--root` takes as input a path to dataset.
 
-`--config-file` means which config file to use, such as `rn50` or `vit_b16`.
+`--config-file` means which config file to use.
 
-You can select variables like shots, users by changing `cfg` or you can change every arguments you like in `plot_few_shot.sh`.
+You can select variables like shots, users by changing `cfg` or you can change every arguments you like in scripts.
 
-### For example
-**FedOTP (M=16, end)**:
-If you want to train caltech101 with 2 shots, backbone rn50 and total independent non-iid setting.
-You can specify that:
-`MODEL=FedOTP`
-`TRAINER=PLOT`
-`OT=COT`
-`DATA=caltech101`
-`SHOTS=2`
-and run `bash plot_few_shot.sh`
-
-After the experiments, all the results are finished and save to `output/`.
-We build and modify the code based on Dassl and CoOp.
-We will release the full-version and detailed description later.
+### Running example
+`bash scripts/plt_few_shot.sh`
+## Citation
+If you find our work useful in your research, please consider citing:
+```
+@article{cui2024harmonizing,
+  title={Harmonizing Generalization and Personalization in Federated Prompt Learning},
+  author={Cui, Tianyu and Li, Hongxia and Wang, Jingya and Shi, Ye},
+  journal={arXiv preprint arXiv:2405.09771},
+  year={2024}
+}
+```
 
 
